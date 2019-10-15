@@ -7,12 +7,15 @@ class App extends Component {
     super(props);
     this.state = {
       weight: '',
-      height: ''
+      height: '',
+      method: 'metric'
     }
   }
+
   render () {
     return (
       <div className="App">
+        <h1>BMI Converter</h1>
         <div>
           <label>Weight(kg)</label>
           <input name="weight" value= { this.state.weight } onChange= { (e) => this.setState({ weight: e.target.value })} />
@@ -23,9 +26,19 @@ class App extends Component {
           <input name="height" value= { this.state.height } onChange= { (e) => this.setState({ height: e.target.value })}/>
         </div>
 
+        <div className="form-group row">
+            <div className="col-auto">
+                <select className="form-control" id="method">
+                    <option name="metric" value={ this.state.method } onChange= { (e) => this.setState({ method: e.target.value })}>metric</option>
+                    <option name="imperial" value={ this.state.method } onChange= { (e) => this.setState({ method: e.target.value })}>imperial</option>
+                </select>
+            </div>
+        </div>
+
         <DisplayResult
           weight={this.state.weight}
           height={this.state.height}
+          method={this.state.method}
         />
       </div>
     );
