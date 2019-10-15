@@ -1,6 +1,7 @@
 import './App.css';
 import React, { Component } from 'react';
 import DisplayResult from './Components/displayResult';
+import BMISelector from './Components/BMISelector';
 
 class App extends Component {
   constructor(props) {
@@ -12,10 +13,21 @@ class App extends Component {
     }
   }
 
+  methodChange = e => {
+    this.setState({ method: e.target.value })
+  }
+
   render () {
     return (
       <div className="App">
         <h1>BMI Converter</h1>
+        <div>
+          <BMISelector
+            method={this.state.method}
+            onChangeValue={this.methodChange}
+          />
+        </div>
+
         <div>
           <label>Weight(kg)</label>
           <input name="weight" value= { this.state.weight } onChange= { (e) => this.setState({ weight: e.target.value })} />
@@ -24,15 +36,6 @@ class App extends Component {
         <div>
           <label>Height(cm)</label>
           <input name="height" value= { this.state.height } onChange= { (e) => this.setState({ height: e.target.value })}/>
-        </div>
-
-        <div className="form-group row">
-            <div className="col-auto">
-                <select className="form-control" id="method">
-                    <option name="metric" value={ this.state.method } onChange= { (e) => this.setState({ method: e.target.value })}>metric</option>
-                    <option name="imperial" value={ this.state.method } onChange= { (e) => this.setState({ method: e.target.value })}>imperial</option>
-                </select>
-            </div>
         </div>
 
         <DisplayResult

@@ -1,13 +1,16 @@
 import React from 'react'
-import { Select } from 'semantic-ui-react'
 
-const BMIConverter = [
-  { key: 'method', value: 'metric', text: 'Metric' },
-  { key: 'method', value: 'imperial', text: 'Imperial' },
-]
-
-const BMISelector = () => (
-  <Select placeholder='BMI Converter' options={BMIConverter} />
-)
+function BMISelector(props) {
+  return (
+    <>
+      <div>
+          <select className="method-selector" name="method" id="method" onChange={props.onChangeValue} value={props.method}>
+            <option value="metric">Metric</option>
+            <option value="imperial" name="imperial">Imperial</option>
+          </select>
+      </div>
+    </>
+  )
+}
 
 export default BMISelector
