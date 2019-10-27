@@ -2,6 +2,7 @@ import './App.css';
 import React, { Component } from 'react';
 import DisplayResult from './Components/displayResult';
 import BMISelector from './Components/BMISelector';
+import CalculatorInput from './Components/CalculatorInput';
 
 class App extends Component {
   constructor(props) {
@@ -13,11 +14,11 @@ class App extends Component {
     }
   }
 
-  methodChange = e => {
+  methodChange = (e) => {
     this.setState({ method: e.target.value })
   }
 
-  inputChangeHandler(e) {
+  inputChangeHandler (e) {
     this.setState({
       [e.target.name]: e.target.value
     })
@@ -35,13 +36,9 @@ class App extends Component {
         </div>
 
         <div>
-          <label>Weight(kg)</label>
-          <input name="weight" onChange= { (e) => this.inputChangeHandler(e) } />
-        </div>
-
-        <div>
-          <label>Height(cm)</label>
-          <input name="height" onChange= { (e) => this.inputChangeHandler(e) }/>
+          <CalculatorInput 
+            inputChangeHandler={this.inputChangeHandler.bind(this)}
+          />
         </div>
 
         <DisplayResult
