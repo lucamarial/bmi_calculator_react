@@ -17,6 +17,12 @@ class App extends Component {
     this.setState({ method: e.target.value })
   }
 
+  inputChangeHandler(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+
   render () {
     return (
       <div className="App">
@@ -30,12 +36,12 @@ class App extends Component {
 
         <div>
           <label>Weight(kg)</label>
-          <input name="weight" value= { this.state.weight } onChange= { (e) => this.setState({ weight: e.target.value })} />
+          <input name="weight" onChange= { (e) => this.inputChangeHandler(e) } />
         </div>
 
         <div>
           <label>Height(cm)</label>
-          <input name="height" value= { this.state.height } onChange= { (e) => this.setState({ height: e.target.value })}/>
+          <input name="height" onChange= { (e) => this.inputChangeHandler(e) }/>
         </div>
 
         <DisplayResult
