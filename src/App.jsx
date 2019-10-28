@@ -37,6 +37,7 @@ class App extends Component {
 
         <div>
           <CalculatorInput 
+            method={this.state.method}
             inputChangeHandler={this.inputChangeHandler.bind(this)}
           />
         </div>
